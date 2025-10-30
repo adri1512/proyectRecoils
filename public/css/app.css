@@ -1,0 +1,130 @@
+.color_green {
+    color: #44ac04 !important;
+}
+
+.color_gold {
+    color: #d4ac04 !important;
+}
+
+.color_gray {
+    color: #555555 !important;
+}
+
+.btn_green {
+    background-color: #44ac04 !important;
+    color: white !important;
+    border: none;
+}
+
+.btn_green:hover {
+    background-color: #3a9403 !important;
+}
+
+.btn_green_border {
+    background-color: transparent !important;
+    border: 2px solid #44ac04 !important;
+    color: black !important;
+}
+
+.btn_green_border:hover {
+    background-color: #44ac04 !important;
+    border: 2px solid #44ac04 !important;
+}
+
+.btn_gray {
+    background-color: #555555 !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* ------------------ sidebar ------------------ */
+/* @media (min-width: 768px) {
+    #bdSidebar {
+      background-color: #f8f9fa !important;
+    }
+  } */
+
+.sidebar {
+    width: 300px  !important;
+    background-color: #f8f9fa !important;
+}
+
+.btn_sidebar {
+    color: #555555 !important;
+    border: none !important;
+}
+
+.btn_sidebar:hover {
+    background-color: #555555 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.sidebar_profile {
+    width: 100%;
+    background:#eeeeee;
+    text-decoration: none;
+}
+
+.sidebar_profile:hover {
+    background:#dddddd;
+}
+
+
+.profile_p {
+    background-color: #e9ecef;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    margin-bottom: 0;
+    color: #333;
+}
+
+/* CLASES DE LA DIRECCION */
+.card_address {
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: all 0.3s;
+  border: none;
+  background: #f8f9fa;
+  overflow: hidden;
+  position: relative;
+  min-height: 165px !important;
+}
+
+.card_address:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.btn_address {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  color: #555555;
+  transition: color 0.3s;
+}
+    
+.btn_address:hover {
+  color: #333333;
+}
+
+/* CLASES DE LA TABLA DE LAS SOLICITUDES */
+.table_card {
+  background: #f8f9fa !important;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+}
+
+.table_card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.table_card td {
+  border: none;
+  padding: 1rem;
+  background-color: transparent !important;
+}
+
+
