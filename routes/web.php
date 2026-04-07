@@ -8,6 +8,11 @@ use App\Http\Controllers\ClientController;
 Route::get('/', [AuthController::class, 'loginCreate'])->name('user_login_create');
 Route::post('/usuario/inicio/sesion', [AuthController::class, 'loginAuth'])->name('user_login_auth');
 Route::post('/usuario/cerrar/sesion', [AuthController::class, 'logout'])->name('user_logout');
+Route::get('/usuario/contraseña/restablecer', [AuthController::class, 'forgotCreate'])->name('user_forgot_create');
+Route::post('/usuario/contraseña/restablecer/correo', [AuthController::class, 'forgotStore'])->name('user_forgot_store');
+Route::get('/usuario/contraseña/restablecer/{email}/{token}', [AuthController::class, 'passwordReset'])->name('user_password_reset');
+Route::post('/usuario/contraseña/restablecer/actualizar', [AuthController::class, 'passwordUpdate'])->name('user_password_update');
+
 
 Route::get('/usuario/registro', [SignUpController::class, 'signupCreate'])->name('user_signup_create');
 Route::post('/usuario/registro/guardar', [SignUpController::class, 'signupStore'])->name('user_signup_store');
@@ -35,9 +40,3 @@ Route::get('/cliente/solicitudes/ver/{id}', [ClientController::class, 'pickupReq
 
 
 Route::get('/cliente/perfil', [ClientController::class, 'profile'])->name('client_profile');
-
-
-
-Route::get('/forgot', function () { return view('forgot_password'); })->name('forgot');
-
-Route::get('/reset', function () { return view('reset_password'); })->name('reset');

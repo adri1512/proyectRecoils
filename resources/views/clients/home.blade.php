@@ -8,7 +8,7 @@
 <div class="container-fluid px-3">
   <div class="row g-3 row-cols-2 row-cols-lg-4">
     <div class="col">
-      <div class="card shadow-sm border-0 rounded-3 text-center" style="background-color:#fff3cd; border-left:5px solid #ffc107;">
+      <div class="card_home text-center p-3" style="">
         <div class="card-body">
           <i class="fa-solid fa-clock fa-2x text-warning mb-2"></i>
           <h5 class="card-title mb-1">{{ $pickup_counts['pendientes'] }}</h5>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="col">
-      <div class="card shadow-sm border-0 rounded-3 text-center" style="background-color:#d1ecf1; border-left:5px solid #17a2b8;">
+      <div class="card shadow-sm border-0 rounded-3 text-center" style="background-color:#f8f9fa; border-left:5px solid #17a2b8;">
         <div class="card-body">
           <i class="fa-solid fa-check fa-2x text-info mb-2"></i>
           <h5 class="card-title mb-1">{{ $pickup_counts['asignadas'] }}</h5>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="col">
-      <div class="card shadow-sm border-0 rounded-3 text-center" style="background-color:#cce5ff; border-left:5px solid #007bff;">
+      <div class="card shadow-sm border-0 rounded-3 text-center" style="background-color:#f8f9fa; border-left:5px solid #007bff;">
         <div class="card-body">
           <i class="fa-solid fa-truck fa-2x text-primary mb-2"></i>
           <h5 class="card-title mb-1">{{ $pickup_counts['en_ruta'] }}</h5>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="col">
-      <div class="card shadow-sm border-0 rounded-3 text-center" style="background-color:#d4edda; border-left:5px solid #28a745;">
+      <div class="card shadow-sm border-0 rounded-3 text-center" style="background-color:#f8f9fa; border-left:5px solid #28a745;">
         <div class="card-body">
           <i class="fa-solid fa-check-circle fa-2x text-success mb-2"></i>
           <h5 class="card-title mb-1">{{ $pickup_counts['completadas'] }}</h5>

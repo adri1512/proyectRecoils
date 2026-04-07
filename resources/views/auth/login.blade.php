@@ -26,7 +26,7 @@
     </form>
     <div class="d-flex flex-column align-items-center justify-content-center mt-3">
       <p class="text-muted mb-0"> ¿No estás registrado? <a class="color_green" href="{{ route('user_signup_create') }}">Regístrate</a></p>
-      <a class="color_green" href="#">¿Olvidaste tu contraseña?</a>
+      <a class="color_green" href="{{ route('user_forgot_create') }}">¿Olvidaste tu contraseña?</a>
     </div>
   </div>
 

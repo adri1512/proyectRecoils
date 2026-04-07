@@ -37,13 +37,6 @@
     border: none !important;
 }
 
-/* ------------------ sidebar ------------------ */
-/* @media (min-width: 768px) {
-    #bdSidebar {
-      background-color: #f8f9fa !important;
-    }
-  } */
-
 .sidebar {
     width: 300px  !important;
     background-color: #f8f9fa !important;
@@ -77,6 +70,14 @@
     border-radius: 0.4rem;
     margin-bottom: 0;
     color: #333;
+}
+
+.card_home {
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: none;
+  background: #f8f9fa;
+  overflow: hidden;
 }
 
 /* CLASES DE LA DIRECCION */
@@ -125,6 +126,14 @@
   border: none;
   padding: 1rem;
   background-color: transparent !important;
+}
+
+.card_profile {
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: none;
+  background: #f8f9fa;
+  overflow: hidden;
 }
 
 
