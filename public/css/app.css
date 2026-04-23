@@ -78,23 +78,19 @@
   border: none;
   background: #f8f9fa;
   overflow: hidden;
+  padding: 1rem;
+  text-align: center;
 }
 
 /* CLASES DE LA DIRECCION */
 .card_address {
   border-radius: 0.75rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  transition: all 0.3s;
   border: none;
   background: #f8f9fa;
   overflow: hidden;
   position: relative;
   min-height: 165px !important;
-}
-
-.card_address:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .btn_address {
@@ -109,31 +105,21 @@
   color: #333333;
 }
 
-/* CLASES DE LA TABLA DE LAS SOLICITUDES */
-.table_card {
-  background: #f8f9fa !important;
-  border-radius: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease-in-out;
-}
-
-.table_card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-}
-
-.table_card td {
-  border: none;
-  padding: 1rem;
-  background-color: transparent !important;
-}
-
 .card_profile {
   border-radius: 0.75rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   border: none;
   background: #f8f9fa;
   overflow: hidden;
+}
+
+.card_route {
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: none;
+  background: #f8f9fa;
+  overflow: hidden;
+  padding: 1rem;
 }
 
 

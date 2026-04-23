@@ -43,6 +43,12 @@ class User extends Authenticatable implements MustVerifyEmail
     return $this->hasMany(PickupRequest::class, 'id_client');
     }
 
+    // Relación con el modelo PickupRequest
+    public function pickuprequest_driver()
+    {
+    return $this->hasMany(PickupRequest::class, 'id_driver');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

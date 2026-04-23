@@ -50,8 +50,16 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            
-            return redirect()->route('client_home');
+
+            $user = Auth::user();
+
+            if ($user->role === 'cliente') {
+                return redirect()->route('client_home');
+            }
+
+            if ($user->role === 'conductor') {
+                return redirect()->route('driver_home');
+            }
         }
 
         return redirect()->back()->with('error', 'Las credenciales no coinciden con nuestros registros.');

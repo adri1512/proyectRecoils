@@ -17,6 +17,7 @@ class PickupRequest extends Model
         'container_quantify',
         'additional_details',
         'status',
+        'id_driver',
     ];
 
     // Estados posibles de la solicitud
@@ -36,5 +37,11 @@ class PickupRequest extends Model
     public function address()
     {
         return $this->belongsTo(Address::class, 'id_address');
+    }
+
+    // Relación con el modelo User(Conductor)
+    public function driver()
+    {
+        return $this->belongsTo(User::class, 'id_driver');
     }
 }
