@@ -48,5 +48,6 @@ Route::middleware(['auth', 'role:cliente'])->group(function () {
 Route::middleware(['auth', 'role:conductor'])->group(function () { 
   Route::get('/conductor',  [DriverController::class, 'home'])->name('driver_home');
   Route::get('/conductor/miruta/recoleccion',  [DriverController::class, 'route'])->name('driver_route');
+  Route::get('/conductor/miruta/mirecoleccion/{id}',  [DriverController::class, 'route_stop'])->name('driver_route_stop');
   Route::get('/conductor/perfil', [DriverController::class, 'profile'])->name('driver_profile');
 });

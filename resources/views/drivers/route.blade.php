@@ -1,7 +1,7 @@
 @extends('templates.driver')
 @section('title', 'Mi Ruta - Recoils')
 
-@section('client_content')
+@section('driver_content')
   <h1 class="fw-bold">Bienvenido, {{ ucwords(Auth::user()->name) }} 👋</h1>
   <p>Consulta tu ruta del día y registra cada recolección de forma rápida.</p>
 
@@ -47,12 +47,12 @@
 
         <!-- BOTÓN -->
         @if($pickup->status == 'asignada')
-          <a href="" class="btn btn-sm btn-outline-secondary w-100" style="">
+          <a href="{{ route('driver_route_stop', $pickup->id) }}" class="btn btn-sm btn-outline-secondary w-100" style="">
             Iniciar
           </a>
 
         @elseif($pickup->status == 'en ruta')
-          <a href="" class="btn btn-sm btn-outline-secondary text-success w-100">
+          <a href="{{ route('driver_route_stop', $pickup->id) }}" class="btn btn-sm btn-outline-secondary text-success w-100">
             Continuar
           </a>
 

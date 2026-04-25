@@ -1,7 +1,7 @@
 @extends('templates.driver')
 @section('title', 'Mi espacio - Recoils')
 
-@section('client_content')
+@section('driver_content')
   <h1 class="fw-bold">Bienvenido, {{ ucwords(Auth::user()->name) }} 👋</h1>
   <h6 class="text-muted mb-4">{{ \Carbon\Carbon::now()->translatedFormat('l d \d\e F') }}</h6>
 

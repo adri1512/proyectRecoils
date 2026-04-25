@@ -22,6 +22,13 @@ class DriverController extends Controller
         return view('drivers.route', compact('pickups'));
     }
 
+    public function route_stop($id)
+    {
+        $pickup = PickupRequest::with(['user', 'address'])->findOrFail($id);
+        
+        return view('drivers.route_stop', compact('pickup'));
+    }
+
     public function profile()
     {
         return view('drivers.profile');

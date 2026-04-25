@@ -41,7 +41,7 @@
       </div>
 
       <div class="p-4">
-        @yield('client_content')
+        @yield('driver_content')
       </div>  
     </div>
   </div>

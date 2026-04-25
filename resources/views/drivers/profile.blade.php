@@ -1,7 +1,7 @@
 @extends('templates.driver')
 @section('title', 'Perfil - Recoils')
 
-@section('client_content')
+@section('driver_content')
 
 <div class="container py-2">
   <div class="d-flex justify-content-center">
