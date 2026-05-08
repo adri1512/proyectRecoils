@@ -60,6 +60,10 @@ class AuthController extends Controller
             if ($user->role === 'conductor') {
                 return redirect()->route('driver_home');
             }
+
+            if ($user->role === 'logistico') {
+                return redirect()->route('logistic_home');
+            }
         }
 
         return redirect()->back()->with('error', 'Las credenciales no coinciden con nuestros registros.');

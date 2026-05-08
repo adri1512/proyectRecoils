@@ -122,4 +122,8 @@
   padding: 1rem;
 }
 
+.card_scroll {
+  max-height: 200px;
+  overflow-y: auto;
+}
 

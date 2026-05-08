@@ -5,6 +5,7 @@ use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\LogisticController;
 
 Route::get('/login', function () { return view('auth.login');})->name('login');
 Route::get('/', [AuthController::class, 'loginCreate'])->name('user_login_create');
@@ -51,3 +52,12 @@ Route::middleware(['auth', 'role:conductor'])->group(function () {
   Route::get('/conductor/miruta/mirecoleccion/{id}',  [DriverController::class, 'route_stop'])->name('driver_route_stop');
   Route::get('/conductor/perfil', [DriverController::class, 'profile'])->name('driver_profile');
 });
+
+// RUTAS PARA EL ROL DEL LOGISTICO
+Route::middleware(['auth', 'role:logistico'])->group(function () { 
+  Route::get('/logistico',  [LogisticController::class, 'home'])->name('logistic_home');
+  Route::get('/logistico/rutas/crear', [LogisticController::class, 'routeCreate'])->name('logistic_route_create');
+  Route::post('/logistico/rutas/guardar', [LogisticController::class, 'routeStore'])->name('logistic_route_store');
+  Route::get('/logistico/perfil', [LogisticController::class, 'profile'])->name('logistic_profile');
+});
+

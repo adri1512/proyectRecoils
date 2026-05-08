@@ -18,12 +18,16 @@ class RoleMiddleware
         $user = auth()->user();
 
         if (!$user || $user->role !== $role) {
+            if ($user && $user->role === 'cliente') {
+                return redirect()->route('client_home');
+            }
+
             if ($user && $user->role === 'conductor') {
                 return redirect()->route('driver_home');
             }
 
-            if ($user && $user->role === 'cliente') {
-                return redirect()->route('client_home');
+            if ($user && $user->role === 'logistico') {
+                return redirect()->route('logistic_home');
             }
 
             return redirect('/');

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->integer('container_quantify'); // Número de pimpinas
             $table->string('additional_details')->nullable();
             $table->string('status'); // pendiente, programada, completada, cancelada.
-            $table->unsignedBigInteger('id_driver')->nullable();
             $table->timestamps();
 
             // Definir las claves foráneas
