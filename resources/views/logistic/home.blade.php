@@ -5,7 +5,7 @@
   <h1 class="fw-bold">Bienvenido, {{ ucwords(Auth::user()->name) }} 👋</h1>
   <h6 class="text-muted mb-4">{{ \Carbon\Carbon::now()->translatedFormat('l d \d\e F') }}</h6>
 
-  <div class="container-fluid px-3">
+  <div class="container-fluid px-0 mb-3">
   <div class="row g-3 row-cols-2 row-cols-lg-4">
     <div class="col">
       <div class="card_home">

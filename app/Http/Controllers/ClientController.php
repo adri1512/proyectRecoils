@@ -234,7 +234,6 @@ class ClientController extends Controller
         $validated = $request->validate([
             'address_pickup' => 'required|exists:addresses,id',
             'phone_pickup' => 'required|string|regex:/^[0-9]+$/|min:7|max:15',
-            'requested_date_pickup' => 'required|date|after_or_equal:tomorrow',
             'container_quantify_pickup' => 'required|string|regex:/^[0-9]+$/|max:3',
             'notes_pickup' => 'nullable|string|max:100',
         ]);
@@ -250,7 +249,7 @@ class ClientController extends Controller
         $address = Auth::user()->addresses()->where('status', Address::STATUS_ACTIVA)->findOrFail($id);
 
         // Verificar duplicados
-        $pickupRequestExists = Auth::user()->pickuprequest()->where('id_address', $validated['address_pickup'])->whereDate('requested_date', $validated['requested_date_pickup'])->whereIn('status', ['pendiente', 'asignada'])->exists();
+        $pickupRequestExists = Auth::user()->pickuprequest()->where('id_address', $validated['address_pickup'])->whereIn('status', ['pendiente', 'asignada'])->exists();
         if ($pickupRequestExists) {
             return redirect()->back()->with('error', 'Ya tienes una solicitud pendiente o asignada para esta fecha y dirección.');
         }
@@ -259,7 +258,6 @@ class ClientController extends Controller
         Auth::user()->pickuprequest()->create([
             'id_address' => $validated['address_pickup'],
             'phone' => $validated['phone_pickup'],
-            'requested_date' => $validated['requested_date_pickup'], 
             'container_quantify' => $validated['container_quantify_pickup'],
             'additional_details' => $validated['notes_pickup'],
             'status'=> PickupRequest::STATUS_PENDIENTE,

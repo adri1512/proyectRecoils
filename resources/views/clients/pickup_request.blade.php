@@ -25,17 +25,21 @@
       </div>
     </div>
 
-    <div class="row g-3 mb-3">
-      <!-- FECHA SUGERIDA DE RECOLECCIÓN -->
+    <div class="row g-3 mb-0">
+      <!-- PIMPINAS -->
       <div class="col-md-6">
-        <label class="form-label" for="requested_date_pickup">Fecha sugerida de recolección</label>
-        <input class="form-control" type="date" id="requested_date_pickup" name="requested_date_pickup" min="{{ \Carbon\Carbon::tomorrow()->format('Y-m-d') }}" max="{{ \Carbon\Carbon::now()->addDays(30)->format('Y-m-d') }}" required>
+        <label class="form-label" for="container_quantify_pickup">Número de pimpinas</label>
+        <input class="form-control" type="text" id="container_quantify_pickup" name="container_quantify_pickup" pattern="[0-9]*" maxlength="3" title="Has alcanzado el máximo de 3 caracteres" required>
       </div>
-
-      <!-- NUMERO DE PIMPINAS -->
+      
+      <!-- PIMPINAS VACÍAS OPCIONAL -->
       <div class="col-md-6">
-        <label class="form-label" for="container_quantify_pickup">Número de Pimpinas</label>
-        <input class="form-control" type="text" id="container_quantify_pickup" name="container_quantify_pickup" pattern="[0-9]*" maxlength="3" title="Has alcanzado el máximo de 3 caracteres"  required>
+        <label class="form-label" for="empty_quantify_pickup">Número de pimpinas vacías</label>
+        <input class="form-control mb-2" type="text" id="empty_quantify_pickup" name="empty_quantify_pickup" pattern="[0-9]*" maxlength="3" title="Has alcanzado el máximo de 3 caracteres" disabled>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="empty_quantify_pickup_check">
+          <label class="form-check-label" for="empty_quantify_pickup_check">Entregaré pimpinas vacías</label>
+        </div>
       </div>
     </div>
 
@@ -84,7 +88,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Inputs numericos solo reciben numeros ------------------------------------------
-      document.querySelectorAll("#phone_pickup, #container_quantify_pickup").forEach(input => 
+      document.querySelectorAll("#phone_pickup, #container_quantify_pickup, #empty_quantify_pickup").forEach(input => 
         input.addEventListener("input", () => input.value = input.value.replace(/\D/g, ''))
       );
 
@@ -114,6 +118,7 @@
 
       addLimitTooltip("phone_pickup");
       addLimitTooltip("container_quantify_pickup");
+      addLimitTooltip("empty_quantify_pickup");
       addLimitTooltip("notes_pickup");
 
       // Evitar multiples envios del form  ----------------------------------------------
@@ -139,6 +144,19 @@
           }, 7000); 
         }
       }
+
+      // Activar/desactivar input de pimpinas vacías -------------------
+      const emptyContainersCheck = document.getElementById('empty_quantify_pickup_check');
+      const emptyContainersInput = document.getElementById('empty_quantify_pickup');
+      
+      emptyContainersCheck.addEventListener('change', function () {
+        emptyContainersInput.disabled = !this.checked;
+        emptyContainersInput.required = this.checked;
+        
+        if (!this.checked) {
+          emptyContainersInput.value = '';
+        }
+      });
     });
   </script>
 @endsection

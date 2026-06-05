@@ -58,6 +58,11 @@ Route::middleware(['auth', 'role:logistico'])->group(function () {
   Route::get('/logistico',  [LogisticController::class, 'home'])->name('logistic_home');
   Route::get('/logistico/rutas/crear', [LogisticController::class, 'routeCreate'])->name('logistic_route_create');
   Route::post('/logistico/rutas/guardar', [LogisticController::class, 'routeStore'])->name('logistic_route_store');
+
+
+  Route::get('/logistico/solicitudes', [LogisticController::class, 'pickupRequestIndex'])->name('logistic_pickup_request_index');
+  Route::get('/logistico/solicitudes/ver/{id}', [LogisticController::class, 'pickupRequestShow'])->name('logistic_pickup_request_show');
+
   Route::get('/logistico/perfil', [LogisticController::class, 'profile'])->name('logistic_profile');
 });
 

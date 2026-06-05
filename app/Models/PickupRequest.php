@@ -12,7 +12,6 @@ class PickupRequest extends Model
         'id_client',
         'id_address',
         'phone',
-        'requested_date',
         'scheduled_date',
         'container_quantify',
         'additional_details',

@@ -3,10 +3,13 @@
 
 @section('driver_content')
   <!-- HEADER -->
-  <div class="mb-3">
-    <h5 class="fw-bold mb-1">Recolección</h5>
-    <small class="text-muted">Registra la entrega del cliente</small>
+  <div class="d-flex align-items-center mb-2">
+    <a href="{{ route('driver_route') }}" class="btn btn-link text-muted me-2">
+      <i class="fa-solid fa-arrow-left-long"></i>
+    </a>
+    <h1 class="fw-bold mb-0">Recolección</h1>
   </div>
+  <p class="mb-4">Registra la entrega del cliente</p>
 
   <!-- INFO DEL CLIENTE -->
   <div class="card_route p-3 mb-3">
@@ -24,47 +27,233 @@
   </div>
 
   <!-- FORMULARIO -->
-  <form action="#" method="POST" enctype="multipart/form-data">
-    @csrf
+  <!-- FORMULARIO -->
+<form action="#" method="POST" enctype="multipart/form-data">
+  @csrf
 
-    <!-- CANTIDAD -->
-    <div class="card_route p-3 mb-3">
-      <label class="form-label fw-semibold">Cantidad recolectada</label>
-      <input type="number" class="form-control" name="quantity" placeholder="Ej: 3" required>
+  <!-- DATOS DE RECOLECCIÓN -->
+  <div class="card_route p-3 mb-3">
+    <h6 class="fw-bold mb-3">
+      <i class="fa-solid fa-oil-can me-2 color_green"></i>
+      Datos de recolección
+    </h6>
+
+    <div class="row g-3">
+      <!-- PIMPINAS LLENAS -->
+      <div class="col-6">
+        <label class="form-label fw-semibold">
+          Pimpinas llenas
+        </label>
+
+        <input 
+          type="number"
+          class="form-control"
+          name="full_containers"
+          id="full_containers"
+          placeholder="0"
+          min="0"
+          required
+        >
+      </div>
+
+      <!-- KILOS -->
+      <div class="col-6">
+        <label class="form-label fw-semibold">
+          Kilos
+        </label>
+
+        <input 
+          type="number"
+          class="form-control"
+          name="oil_kilos"
+          id="oil_kilos"
+          placeholder="0"
+          min="0"
+          required
+        >
+      </div>
+
+      <!-- VALOR POR KILO -->
+      <div class="col-6">
+        <label class="form-label fw-semibold">
+          Valor por kilo
+        </label>
+
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+
+          <input 
+            type="number"
+            class="form-control"
+            name="price_per_kilo"
+            id="price_per_kilo"
+            placeholder="0"
+            min="0"
+          >
+        </div>
+      </div>
+
+      <!-- SUBTOTAL -->
+      <div class="col-6">
+        <label class="form-label fw-semibold">
+          Subtotal
+        </label>
+
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+
+          <input 
+            type="text"
+            class="form-control bg-light"
+            id="subtotal"
+            readonly
+            placeholder="0"
+          >
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- FOTO -->
-    <div class="card_route p-3 mb-3">
-      <label class="form-label fw-semibold">Foto de evidencia</label>
-      <input type="file" class="form-control" name="photo" accept="image/*">
+  <!-- PIMPINAS VACÍAS -->
+  <div class="card_route p-3 mb-3">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h6 class="fw-bold mb-0">
+        <i class="fa-solid fa-box-open me-2 text-secondary"></i>
+        Pimpinas vacías
+      </h6>
 
-      <!-- preview -->
-      <img id="preview" class="img-fluid mt-2 d-none" style="border-radius:8px;">
-    </div>
+      <div class="form-check m-0">
+        <input 
+          class="form-check-input"
+          type="checkbox"
+          id="empty_containers_check"
+        >
 
-    <!-- FIRMA -->
-    <div class="card_route p-3 mb-3">
-      <label class="form-label fw-semibold">Firma del cliente</label>
-
-      <canvas id="signature-pad"
-        style="border:1px solid #ddd; width:100%; height:180px; border-radius:8px;">
-      </canvas>
-
-      <input type="hidden" name="signature" id="signature">
-
-      <div class="text-end mt-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="clearSignature()">
-          Limpiar
-        </button>
+        <label class="form-check-label small" for="empty_containers_check">
+          Registrar
+        </label>
       </div>
     </div>
 
-    <!-- BOTÓN FINAL -->
-    <button class="btn btn-dark w-100 py-2">
-      Finalizar recolección
-    </button>
+    <div class="row g-3 d-none" id="empty_containers_box">
+      <!-- CANTIDAD -->
+      <div class="col-6">
+        <label class="form-label fw-semibold">
+          Cantidad
+        </label>
 
-  </form>
+        <input 
+          type="number"
+          class="form-control"
+          name="empty_containers"
+          id="empty_containers"
+          placeholder="0"
+          min="0"
+        >
+      </div>
+
+      <!-- VALOR -->
+      <div class="col-6">
+        <label class="form-label fw-semibold">
+          Valor
+        </label>
+
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+
+          <input 
+            type="number"
+            class="form-control"
+            name="empty_containers_value"
+            id="empty_containers_value"
+            placeholder="0"
+            min="0"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOTAL -->
+  <div class="card_route p-3 mb-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <small class="text-muted d-block">
+          Total calculado
+        </small>
+
+        <h3 class="fw-bold mb-0" id="total_text">
+          $0
+        </h3>
+      </div>
+
+      <i class="fa-solid fa-sack-dollar fa-2x text-success"></i>
+    </div>
+  </div>
+
+  <!-- OBSERVACIONES -->
+  <div class="card_route p-3 mb-3">
+    <label class="form-label fw-semibold">
+      Observaciones
+    </label>
+
+    <textarea 
+      class="form-control"
+      name="observations"
+      rows="3"
+      placeholder="Ej: el aceite tenía residuos, se entregaron pimpinas adicionales, etc."
+    ></textarea>
+  </div>
+
+  <!-- FOTO -->
+  <div class="card_route p-3 mb-3">
+    <label class="form-label fw-semibold">
+      Foto de evidencia
+    </label>
+
+    <input 
+      type="file"
+      class="form-control"
+      name="photo"
+      accept="image/*"
+    >
+
+    <img 
+      id="preview"
+      class="img-fluid mt-3 d-none"
+      style="border-radius:12px;"
+    >
+  </div>
+
+  <!-- FIRMA -->
+  <div class="card_route p-3 mb-4">
+    <label class="form-label fw-semibold">
+      Firma del cliente
+    </label>
+
+    <canvas 
+      id="signature-pad"
+      style="border:1px solid #ddd;width:100%;height:180px;border-radius:12px;">
+    </canvas>
+
+    <input type="hidden" name="signature" id="signature">
+
+    <div class="text-end mt-2">
+      <button 
+        type="button"
+        class="btn btn-sm btn-outline-secondary"
+        onclick="clearSignature()"
+      >
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÓN -->
+  <button class="btn btn_green w-100 py-3 fw-semibold">
+    Finalizar recolección
+  </button>
+</form>
 
   <script>
 // =========================

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_client');
             $table->unsignedBigInteger('id_address'); // Relación con addresses
             $table->string('phone', 20);  // Telefono
-            $table->date('requested_date');  // Fecha que pide el cliente
             $table->date('scheduled_date')->nullable(); // Fecha confirmada por logística
             $table->integer('container_quantify'); // Número de pimpinas
             $table->string('additional_details')->nullable();

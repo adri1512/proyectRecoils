@@ -127,3 +127,11 @@
   overflow-y: auto;
 }
 
+.card_pickup_request {
+  border-radius: 0.75rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border: none;
+  background: #f8f9fa;
+  overflow: hidden;
+  padding: 1rem;
+}

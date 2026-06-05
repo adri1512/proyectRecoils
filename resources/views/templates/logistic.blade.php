@@ -15,6 +15,9 @@
           <a class="nav-link {{ Request::routeIs('logistic_home') ? 'active btn_green' : 'btn_sidebar' }}" @if(!Request::routeIs('logistic_home')) href="{{ route('logistic_home') }}" @endif><i class="fa-solid fa-house me-2"></i>Inicio</a>
         </li>
         <li class="nav-item mb-2">
+          <a class="nav-link {{ Request::routeIs('logistic_pickup_request_index') ? 'active btn_green' : 'btn_sidebar' }}" @if(!Request::routeIs('logistic_pickup_request_index')) href="{{ route('logistic_pickup_request_index') }}" @endif><i class="fa-solid fa-folder-open me-2"></i>Solicitudes de Recolección</a>
+        </li>
+        <li class="nav-item mb-2">
           <a class="nav-link {{ Request::routeIs('logistic_route_create') ? 'active btn_green' : 'btn_sidebar' }}" @if(!Request::routeIs('logistic_route_create')) href="{{ route('logistic_route_create') }}" @endif><i class="fa-solid fa-truck me-2"></i>Mi Ruta de Recolección</a>
         </li>
       </ul>

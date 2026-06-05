@@ -1,14 +1,14 @@
-@extends('templates.client')
+@extends('templates.logistic')
 @section('title', 'Mis solicitudes - Recoils')
 
-@section('client_content')
+@section('logistic_content')
   <h1 class="fw-bold">Mis solicitudes</h1>
   <p class="mb-4">Aquí podrás ver las solicitudes de recolección realizadas.</p>
 
   <!-- FILTRO POR ESTADO -->
   <div class="row mb-3">
     <div class="col-md-4">
-      <form method="GET" action="{{ route('client_pickup_request_index') }}" class="d-flex">
+      <form method="GET" action="{{ route('logistic_pickup_request_index') }}" class="d-flex">
         <select name="status" class="form-select me-2" onchange="this.form.submit()">
           <option value="" {{ request('status') == '' ? 'selected' : '' }}>Todas</option>
           <option value="pendiente" {{ request('status') == 'pendiente' ? 'selected' : '' }}>Pendiente</option>
@@ -18,7 +18,7 @@
           <option value="cancelada" {{ request('status') == 'cancelada' ? 'selected' : '' }}>Cancelada</option>
         </select>
 
-        <a href="{{ route('client_pickup_request_index') }}" class="btn btn-outline-secondary">Limpiar</a>
+        <a href="{{ route('logistic_pickup_request_index') }}" class="btn btn-outline-secondary">Limpiar</a>
       </form>
     </div>
   </div>
@@ -27,6 +27,7 @@
   <thead>
     <tr style="color:#000;">
       <th style="font-weight: normal;">Id</th>
+      <th style="font-weight: normal;">Cliente</th>
       <th style="font-weight: normal;">Dirección</th>
       <th style="font-weight: normal;">Municipio</th>
       <th style="font-weight: normal;">Estado</th>
@@ -37,6 +38,7 @@
     @forelse ($pickupRequests as $p)
     <tr>
       <td style="border:none;">{{ $p->id }}</td>
+      <td style="border:none;">{{ $p->user->name ?? ' — ' }}</td>
       <td style="border:none;">{{ $p->address->address ?? ' — ' }}</td>
       <td style="border:none;">{{ $p->address->town->name }}, {{ $p->address->town->department->name  }}</td>
       <td style="border:none;">
@@ -51,7 +53,7 @@
         </span>
       </td>
       <td style="border:none;padding:1rem;">
-        <a class="color_gray" href="{{ route('client_pickup_request_show', $p->id) }}"><i class="fa-solid fa-eye"></i></a>
+        <a class="color_gray" href="{{ route('logistic_pickup_request_show', $p->id) }}"><i class="fa-solid fa-eye"></i></a>
       </td>
     </tr>
     @empty
@@ -68,7 +70,7 @@
 
 @endsection
 
-@section('client_complement')
+@section('logistic_complement')
   @if(session('success') || session('error') || $errors->any())
     <div class="modal fade" id="modal_feedback" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">

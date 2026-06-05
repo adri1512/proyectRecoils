@@ -1,76 +1,81 @@
-@extends('templates.client')
-@section('title', 'Mis solicitudes - Recoils')
+@extends('templates.logistic')
+@section('title', 'Detalle solicitud - Recoils')
 
-@section('client_content')
+@section('logistic_content')
   <div class="d-flex align-items-center mb-3">
-    <a href="{{ route('client_pickup_request_index') }}" class="btn btn-link text-muted me-2">
+    <a href="{{ route('logistic_pickup_request_index') }}" class="btn btn-link text-muted me-2">
       <i class="fa-solid fa-arrow-left-long"></i>
     </a>
     <h1 class="fw-bold mb-0">Mi solicitud</h1>
   </div>
   <p class="mb-4">Detalle de la solicitud de recolección ({{ $pickupRequests->id }})</p>
-  <span class="badge 
-            @if($pickupRequests->status == 'pendiente') bg-warning text-dark
-            @elseif($pickupRequests->status == 'completada') bg-success
-            @elseif($pickupRequests->status == 'cancelada') bg-danger
-            @else bg-secondary @endif">
-            {{ ucfirst($pickupRequests->status) }}
-          </span>
-
-  <!-- <div class="card shadow-sm">
-    <div class="card-body">
-      <p><strong>Dirección:</strong> {{ $pickupRequests->address->address ?? '—' }}</p>
-      <p><strong>Municipio:</strong> {{ $pickupRequests->address->town->name ?? '—' }}</p>
-      <p><strong>Celular:</strong> {{ $pickupRequests->phone ?? '—' }}</p>
-      <p><strong>Numero de pimpinas:</strong> {{ $pickupRequests->container_quantify ?? '—' }}</p>
-      <p><strong>Indicaciones adicionales:</strong> {{ $pickupRequests->additional_details ?? '—' }}</p>
-      <p><strong>Estado:</strong> {{ ucfirst($pickupRequests->status) }}</p>
-      <p><strong>Fecha sugerida:</strong> {{ $pickupRequests->requested_date }}</p>
-      <p><strong>Fecha programada:</strong> {{ $pickupRequests->scheduled_date }}</p>
-    </div>
-  </div> -->
-   <!-- Contenido principal -->
-  <div class="row g-4">
-    <!-- Información general -->
-    <div class="col-md-6">
-      <h5 class="fw-semibold text-primary mb-3">Información general</h5>
-      <ul class="list-unstyled lh-lg">
-        <li><strong class="text-muted">Dirección:</strong> {{ $pickupRequests->address->address ?? '—' }}</li>
-        <li><strong class="text-muted">Municipio:</strong> {{ $pickupRequests->address->town->name ?? '—' }}</li>
-        <li><strong class="text-muted">Celular:</strong> {{ $pickupRequests->phone ?? '—' }}</li>
-        <li><strong class="text-muted">N° de pimpinas:</strong> {{ $pickupRequests->container_quantify ?? '—' }}</li>
-        <li><strong class="text-muted">Indicaciones:</strong> {{ $pickupRequests->additional_details ?? '—' }}</li>
-      </ul>
-    </div>
-
-    <!-- Estado y Fechas -->
-    <div class="col-md-6">
-      <h5 class="fw-semibold text-primary mb-3">Seguimiento</h5>
-      <ul class="list-unstyled lh-lg">
-        <li>
-          <strong class="text-muted">Estado:</strong>
-          
-        </li>
-        <li><strong class="text-muted">Fecha programada:</strong> {{ $pickupRequests->scheduled_date ?? '—' }}</li>
-      </ul>
-    </div>
+ 
+  <div class="row g-4"> 
+    <!-- INFORMACIÓN GENERAL --> 
+    <div class="col-lg-6"> 
+      <div class="card card_pickup_request border-0 shadow-sm h-100"> 
+        <div class="card-body p-0"> 
+          <h5 class="fw-bold mb-3"> <i class="fa-solid fa-circle-info me-2 text-primary"></i> Información general </h5> 
+          <div class="mb-2"> 
+            <small class="text-muted d-block">Cliente</small> 
+            <strong>{{ $pickupRequests->user->name ?? '—' }}</strong> 
+          </div>
+          <div class="row">
+            <div class="col-lg-6 mb-2"> 
+            <small class="text-muted d-block">Dirección</small> 
+            <strong>{{ $pickupRequests->address->address ?? '—' }}</strong> 
+          </div> 
+          <div class="col-lg-6 mb-2"> 
+            <small class="text-muted d-block">Municipio</small> 
+            <strong> {{ $pickupRequests->address->town->name ?? '—' }} </strong> 
+          </div>
+          </div> 
+          <div class="mb-2"> 
+            <small class="text-muted d-block">Celular</small> 
+            <strong>{{ $pickupRequests->phone ?? '—' }}</strong> 
+          </div> <div class="mb-2"> 
+            <small class="text-muted d-block"> Número de pimpinas </small> 
+            <strong> {{ $pickupRequests->container_quantify ?? '—' }} </strong> 
+          </div> 
+          <div> 
+            <small class="text-muted d-block"> Indicaciones adicionales </small> 
+            <div class="bg-light rounded"> {{ $pickupRequests->additional_details ?? 'Sin indicaciones.' }} </div> 
+          </div> 
+        </div>
+      </div> 
+    </div> 
+    <!-- SEGUIMIENTO --> 
+    <div class="col-lg-6"> 
+      <div class="card card_pickup_request border-0 shadow-sm h-100"> 
+        <div class="card-body p-0"> 
+          <h5 class="fw-bold mb-3"> <i class="fa-solid fa-route me-2 text-success"></i> Seguimiento </h5>
+          <div class="mb-2"> <small class="text-muted d-block mb-1"> Estado actual </small> <span class="badge px-3 py-2 fs-6 @if($pickupRequests->status == 'pendiente') bg-warning text-dark @elseif($pickupRequests->status == 'asignada') bg-info text-dark @elseif($pickupRequests->status == 'en ruta') bg-primary @elseif($pickupRequests->status == 'completada') bg-success @elseif($pickupRequests->status == 'cancelada') bg-danger @else bg-secondary @endif"> {{ ucfirst($pickupRequests->status) }} </span> </div> 
+          <div class="mb-2"> 
+            <small class="text-muted d-block"> Fecha programada </small> 
+            <strong> {{ $pickupRequests->scheduled_date ?? 'Sin asignar' }} </strong> 
+          </div> 
+          <!-- PRECIO --> 
+          <div class="mb-2"> 
+            <label class="form-label fw-semibold"> Precio por kilo <small class="text-muted">(opcional)</small> </label> 
+            <div class="input-group"> 
+              <span class="input-group-text"> $ </span> 
+              <input type="text" class="form-control" id="oil_price" name="oil_price" value="{{ $pickupRequests->oil_price ?? '' }}" > 
+            </div> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+  </div> 
+  <!-- BOTONES --> 
+  <div class="d-flex justify-content-end gap-2 mt-4"> 
+    <a href="{{ route('logistic_pickup_request_index') }}" class="btn btn-outline-secondary"> Volver </a> 
+    <button class="btn btn_green"> Guardar cambios </button> 
   </div>
-
-  <!-- Separador -->
-  <hr class="my-5">
-
-  <!-- Botón -->
-  <div class="text-center">
-    <a href="{{ route('client_address_index') }}" class="btn btn_green px-4">
-      Volver a mis solicitudes
-    </a>
-  </div>
-</div>
 @endsection
 
 
 
-@section('client_complement')
+@section('logistic_complement')
   @if(session('success') || session('error') || $errors->any())
     <div class="modal fade" id="modal_feedback" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
